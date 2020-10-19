@@ -16,11 +16,11 @@ YUXUAN JU (1004940521)
 
 ## Abstract
 
-In this report, we analyze how factors like family income, health, and minority affect people's feelings about life through a telephone survey on family in 2017 conducted by General Social Survey. We find out people with higher family income and higher self-rated health tend to have higher feelings about life, and males have lower feelings about lift in general.
+In this report, we analyze how factors like family income, health, and minority affect people's feelings about life through a telephone survey on family in 2017 conducted by General Social Survey. We find out people with higher family income and higher self-rated health tend to have higher feelings about life, and males have lower feelings about life in general.
 
 ## Introduction
 
-The general social survey on Family in 2017 that collects data via telephone is a sample survey with cross-sectional design, where the target population is all non-institutionalized citizens living in ten provinces of Canada older than 15 years old. The purpose of this survey is to monitor changes in living conditions and well-being of Canadians in the long run by gathering data on social trends, and also provide information for social policy to adjust and improve. In our model, we focus on how the family income, self-rated health and sex affect the well-being of people and find out the significance of the relationship between peoples??? feelings about life each factor. While concluding, point out how this survey can improve in the future. 
+The general social survey on Family in 2017 that collects data via telephone is a sample survey with cross-sectional design, where the target population is all non-institutionalized citizens living in ten provinces of Canada older than 15 years old. The purpose of this survey is to monitor changes in living conditions and well-being of Canadians in the long run by gathering data on social trends, and also provide information for social policy to adjust and improve. In our model, we focus on how the family income, self-rated health and sex affect the well-being of people and find out the significance of the relationship between peoples' feelings about life each factor. While concluding, point out how this survey can improve in the future. 
 
 ## Data
 
@@ -61,7 +61,6 @@ labels_raw_tibble <- as_tibble(str_split(labels_raw, ";")[[1]]) %>%
 labels_raw_tibble <- labels_raw_tibble %>% 
   mutate(splits = str_split(cases, "[ ]{0,}\"[ ]{0,}"))
 
-# The function sets up the regex (I know, I know, but eh: https://xkcd.com/208/)
 add_cw_text <- function(x, y){
   if(!is.na(as.numeric(x))){
     x_new <- paste0(y, "==", x,"~")
@@ -418,7 +417,7 @@ Predictors: income_family, Sex, Self_rated_health.
 
 We use the multiple linear regression model to explore the factors affecting peoples' feelings about their life as a whole. We fit three predictor variables, family wealth, sex and self-rated health into the linear model. To check the model, we check the p-value for each factor in the model. P-value means the probability of obtaining a sample that provides stronger evidence against the hypothesized value for the slope, so we want a small p-value. We also check the R square to check the percentage of variation of the sample that can be explained by the model. We also adjust R square with the number of factors in the model, since adding factors to the model will increase R square whether or not these factors are useful. There are no divergences to plot that can get from mcmc plot with trace in Bayesian model.
 
-For diagnostic issues, we find outliers and leverage points for the data. We find 837 leverage points and 848 outliers. Even though it seems there are a lot of outliers and leverage points, we do not need to worry it may affect model fit too much because we have 20318 observations and outliers and leverages are a small proportion of the whole dataset. Also, we do not want to get rid of these outliers and leverage points, because peoples??? wealth, feelings about life and self-rated health can be very different from others in some cases. We consider that these samples are also representative of the whole population, so we include them in our model.
+For diagnostic issues, we find outliers and leverage points for the data. We find 837 leverage points and 848 outliers. Even though it seems there are a lot of outliers and leverage points, we do not need to worry it may affect model fit too much because we have 20318 observations and outliers and leverages are a small proportion of the whole dataset. Also, we do not want to get rid of these outliers and leverage points, because peoples' wealth, feelings about life and self-rated health can be very different from others in some cases. We consider that these samples are also representative of the whole population, so we include them in our model.
 
 ## Results
 
